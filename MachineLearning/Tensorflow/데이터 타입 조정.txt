@@ -1,0 +1,32 @@
+import pandas as pd
+
+파일경로 = 'https://raw.githubusercontent.com/blackdew/tensorflow1/master/csv/iris2.csv'
+아이리스 = pd.read_csv(파일경로)
+아이리스.head()
+
+# 원핫인코딩
+인코딩 = pd.get_dummies(아이리스)
+인코딩.head()
+
+아이리스.dtypes
+
+# 품종 타입 범주형으로 변환
+아이리스['품종'] = 아이리스['품종'].astype('category')
+아이리스.dtypes
+
+# 원핫인코딩
+인코딩 = pd.get_dummies(아이리스)
+인코딩.head()
+
+# NA값을 체크
+아이리스.isna().sum()
+
+아이리스.isna()
+
+아이리스.tail()
+
+# NA값에 꽃잎폭 평균값 넣어주기
+mean = 아이리스['꽃잎폭'].mean()
+아이리스['꽃잎폭'] = 아이리스['꽃잎폭'].fillna(mean)
+아이리스.tail()
+
